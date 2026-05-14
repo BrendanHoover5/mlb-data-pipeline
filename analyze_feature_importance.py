@@ -2,8 +2,7 @@ import psycopg2
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.ensemble import RandomForestClassifier
 
 conn = psycopg2.connect(
     dbname="mlb_data",
@@ -66,16 +65,24 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-model = LogisticRegression(max_iter=1000)
+model = RandomForestClassifier(
+    n_estimators=200,
+    max_depth=10,
+    random_state=42
+)
 
 model.fit(X_train, y_train)
 
-predictions = model.predict(X_test)
+importance_df = pd.DataFrame({
+    "feature": X.columns,
+    "importance": model.feature_importances_
+})
 
-accuracy = accuracy_score(y_test, predictions)
+importance_df = importance_df.sort_values(
+    by="importance",
+    ascending=False
+)
 
-print("\nModel Accuracy:")
-print(round(accuracy, 4))
+print("\nFeature Importances:\n")
 
-print("\nClassification Report:")
-print(classification_report(y_test, predictions))
+print(importance_df.to_string(index=False))

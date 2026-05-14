@@ -84,7 +84,27 @@ CREATE TABLE public.model_training_rows (
     home_team_runs_allowed_per_game_before double precision,
     away_team_runs_allowed_per_game_before double precision,
     home_team_home_win_pct_before double precision,
-    away_team_away_win_pct_before double precision
+    away_team_away_win_pct_before double precision,
+    home_starting_pitcher_id integer,
+    away_starting_pitcher_id integer,
+    home_pitcher_era_before double precision,
+    away_pitcher_era_before double precision,
+    home_pitcher_whip_before double precision,
+    away_pitcher_whip_before double precision,
+    home_pitcher_k_per_9_before double precision,
+    away_pitcher_k_per_9_before double precision,
+    home_pitcher_bb_per_9_before double precision,
+    away_pitcher_bb_per_9_before double precision,
+    home_pitcher_games_before integer,
+    away_pitcher_games_before integer,
+    home_pitcher_last_3_era double precision,
+    away_pitcher_last_3_era double precision,
+    home_pitcher_last_3_whip double precision,
+    away_pitcher_last_3_whip double precision,
+    home_pitcher_last_3_k_per_9 double precision,
+    away_pitcher_last_3_k_per_9 double precision,
+    home_pitcher_last_3_bb_per_9 double precision,
+    away_pitcher_last_3_bb_per_9 double precision
 );
 
 
